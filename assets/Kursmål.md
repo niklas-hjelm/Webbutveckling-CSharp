@@ -9,7 +9,8 @@
 * Webb och frontendutveckling (HTML, CSS och JavaScript) 
 * Kopplingar mellan backend och frontend 
 * Regelverket kring GDPR 
-* Informations- och cybersäkerhet. Kunskaper om och överblick över angränsande yrkes-och kompetensområden såsom webbutveckling och frontend
+* Informations- och cybersäkerhet. 
+* Kunskaper om och överblick över angränsande yrkes-och kompetensområden såsom webbutveckling och frontend
 
 ### Färdigheter
 * Skapa en fungerande kommunikation med ett API 
