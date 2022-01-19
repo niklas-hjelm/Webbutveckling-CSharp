@@ -1,0 +1,88 @@
+img {
+  width: 350px;
+  border-color: #a0e7e5;
+  left: 2%;
+  top: 2%;
+}
+audio {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+}
+body {
+  background-color: #284b63;
+  color: #d9d9d9;
+  font-family: monospace;
+  font-size: 16px;
+}
+table {
+  color: darkslategrey;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+}
+thead {
+  font-weight: bold;
+}
+tbody {
+  font-family: sans-serif;
+}
+h1 {
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0px 0px 4px black;
+}
+#info {
+  background-color: #d9d9d9;
+  width: 100%;
+  height: 125px;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+#content {
+  position: absolute;
+  top: 20%;
+  width: 40%;
+}
+#exp {
+  width: 40%;
+  position: absolute;
+  top: 30%;
+  right: 0%;
+}
+#curve {
+  height: 120%;
+  width: 100%;
+  position: fixed;
+  left: -50%;
+  top: 0%;
+}
+#ball {
+  height: 60%;
+  width: 60%;
+  position: fixed;
+  right: -10%;
+  top: 20%;
+}
+.circle {
+  border-radius: 100%;
+}
+.shape {
+  background-color: #3c6e71;
+  z-index: -1;
+}
+.white {
+  color: white;
+  text-decoration: underline;
+}
+.black {
+  color: black;
+  font-weight: bold;
+}
+video {
+  height: 350px;
+  position: absolute;
+  bottom: 0%;
+  left: 40%;
+}
