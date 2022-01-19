@@ -10,7 +10,13 @@ audio {
   right: 0%;
 }
 body {
-  background-color: #284b63;
+  background: rgb(132, 255, 201);
+  background: linear-gradient(
+    90deg,
+    rgba(132, 255, 201, 1) 0%,
+    rgba(170, 178, 255, 1) 0%,
+    rgba(236, 160, 255, 1) 100%
+  );
   color: #d9d9d9;
   font-family: monospace;
   font-size: 16px;
@@ -24,16 +30,12 @@ table {
 thead {
   font-weight: bold;
 }
-tbody {
-  font-family: sans-serif;
-}
 h1 {
   color: #ffffff;
   text-align: center;
   text-shadow: 0px 0px 4px black;
 }
 #info {
-  background-color: #d9d9d9;
   width: 100%;
   height: 125px;
   position: absolute;
@@ -69,15 +71,15 @@ h1 {
   border-radius: 100%;
 }
 .shape {
-  background-color: #3c6e71;
+  background-color: #ebebd3;
   z-index: -1;
 }
 .white {
-  color: white;
-  text-decoration: underline;
+  color: #f95738;
+  font-weight: bold;
 }
 .black {
-  color: black;
+  color: #083d77;
   font-weight: bold;
 }
 video {
