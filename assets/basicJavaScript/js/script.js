@@ -25,6 +25,7 @@ function showAlert() {
 
 function counter() {
   counterVariable++;
+  document.getElementById("count").innerHTML = counterVariable;
 }
 
 if (one === two) {
@@ -41,7 +42,7 @@ if (one === two) {
 
 document.getElementById("summa").innerHTML += ` ${addNumbers(6, 2)}`;
 
-document.getElementById("namn").innerHTML = "<p>Apa</p>";
+document.getElementById("namn").innerHTML = "Apa";
 document.getElementById("namn2").innerHTML = "Niklas2";
 
 // document.getElementById("leaves").src = "images/picTwo.jpeg";
@@ -49,11 +50,4 @@ document.getElementById("namn2").style.color = "red";
 document.getElementById("namn").style.color = "black";
 // document.getElementById("leaves").style.borderRadius = "50%";
 
-function varTest() {
-  var test = 0;
-  while (test < 5) {
-    test++;
-    let a = 0;
-  }
-  let a = 0;
-}
+document.getElementById("count").innerHTML = counterVariable;
