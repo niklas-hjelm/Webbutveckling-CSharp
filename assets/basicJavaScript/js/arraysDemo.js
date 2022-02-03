@@ -32,9 +32,9 @@ const animalsFromText = text.split(" ");
 
 const allAnimals = animalsFromText.concat(animals);
 
-const people = ["Niklas", "Göran"];
+const people1 = ["Niklas", "Göran"];
 
-const everything = people.concat(animals, animalsFromText);
+const everything = people1.concat(animals, animalsFromText);
 
 const newNames = ["Per", "Petter"];
 
