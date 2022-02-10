@@ -1,3 +1,8 @@
+const jsonMaträtter =
+  '[{"protein": "kyckling", "carb": "pasta", "sauce": "tomato"}]';
+
+const maträtter = JSON.parse(jsonMaträtter);
+
 const jsonRequest = new Request("js/people.json");
 
 const people = [];
