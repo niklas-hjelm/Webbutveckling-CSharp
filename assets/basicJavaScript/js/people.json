@@ -1,0 +1,22 @@
+[
+  {
+    "firstName": "Niklas",
+    "lastName": "Hjelm",
+    "birthDate": "1987-03-30"
+  },
+  {
+    "firstName": "Szofia",
+    "lastName": "Jakobsson",
+    "birthDate": "1981-09-02"
+  },
+  {
+    "firstName": "Thilde",
+    "lastName": "Hjelm Rasmussen",
+    "birthDate": "2016-04-06"
+  },
+  {
+    "firstName": "Vidar",
+    "lastName": "Hjelm Rasmussen",
+    "birthDate": "2018-10-24"
+  }
+]
