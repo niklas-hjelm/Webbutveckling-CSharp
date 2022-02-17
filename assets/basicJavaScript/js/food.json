@@ -1,0 +1,6 @@
+[
+  { "protein": "egg", "carb": "potatoes", "sauce": "ketchup" },
+  { "protein": "chicken", "carb": "rice", "sauce": "soy" },
+  { "protein": "bacon", "carb": "bread", "sauce": "mayonnaise" },
+  { "protein": "beef", "carb": "sweet potatoes", "sauce": "bbq" }
+]
