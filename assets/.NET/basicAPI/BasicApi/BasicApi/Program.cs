@@ -8,6 +8,8 @@ builder.Services.AddSingleton<AnimalStorage>();
 
 var app = builder.Build();
 
+app.UseStaticFiles();
+
 app.MapPost("/animals", ([FromServices] AnimalStorage storage, Animal animal) =>
 {
     if (string.IsNullOrEmpty(animal.Name))
@@ -23,7 +25,7 @@ app.MapPost("/animals", ([FromServices] AnimalStorage storage, Animal animal) =>
     return Results.Ok(storage.GetAll());
 });
 
-app.MapGet("/", ([FromServices] AnimalStorage storage) => "Jag heter Niklas");
+app.MapGet("/", () => Results.Redirect("/index.html"));
 
 app.MapGet("/animals", ([FromServices] AnimalStorage storage) => Results.Ok(storage.GetAll()));
 
@@ -42,7 +44,7 @@ app.MapPut("/animals/{id}", ([FromServices] AnimalStorage storage, int id, Anima
     }
 
     storage.Update(existingAnimal, animal);
-    return Results.Ok(existingAnimal);
+    return Results.Ok(storage.GetById(id));
 });
 
 app.MapPut("/animals/changeName/{id}", ([FromServices] AnimalStorage storage, int id, string name) =>
@@ -54,7 +56,7 @@ app.MapPut("/animals/changeName/{id}", ([FromServices] AnimalStorage storage, in
     }
 
     storage.UpdateName(existingAnimal, name);
-    return Results.Ok(existingAnimal);
+    return Results.Ok(storage.GetById(id));
 });
 
 app.MapPut("/animals/changeType/{id}", ([FromServices] AnimalStorage storage, int id, string type) =>
@@ -66,7 +68,7 @@ app.MapPut("/animals/changeType/{id}", ([FromServices] AnimalStorage storage, in
     }
 
     storage.UpdateType(existingAnimal, type);
-    return Results.Ok(existingAnimal);
+    return Results.Ok(storage.GetById(id));
 });
 
 app.MapDelete("/animals/{id}", ([FromServices] AnimalStorage storage, int id) =>
@@ -79,9 +81,9 @@ app.MapDelete("/animals/{id}", ([FromServices] AnimalStorage storage, int id) =>
     return Results.Ok($"Animal at id: {id} was removed!");
 });
 
-app.MapDelete("/animals/allWithName/{name}", ([FromServices] AnimalStorage storage, string name) =>
+app.MapDelete("/animals/withName/{name}", ([FromServices] AnimalStorage storage, string name) =>
 {
-    if (!storage.DeleteAllWithName(name))
+    if (!storage.DeleteWithName(name))
     {
         return Results.NotFound(name);
     }
