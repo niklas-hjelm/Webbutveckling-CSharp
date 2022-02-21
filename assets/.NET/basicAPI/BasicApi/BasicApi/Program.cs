@@ -1,3 +1,5 @@
+using BasicApi.DAL;
+using BasicApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,16 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<AnimalStorage>();
 
 var app = builder.Build();
-
-app.MapGet("/", ([FromServices] AnimalStorage storage) => "Jag heter Niklas");
-
-app.MapGet("/animals", ([FromServices] AnimalStorage storage) => Results.Ok(storage.GetAll()));
-
-app.MapGet("/animals/{id}", ([FromServices] AnimalStorage storage, Guid id) =>
-{
-    var animal = storage.GetById(id);
-    return animal is null ? Results.StatusCode(418) : Results.Ok(animal);
-});
 
 app.MapPost("/animals", ([FromServices] AnimalStorage storage, Animal animal) =>
 {
@@ -31,7 +23,17 @@ app.MapPost("/animals", ([FromServices] AnimalStorage storage, Animal animal) =>
     return Results.Ok(storage.GetAll());
 });
 
-app.MapPut("/animals/{id}", ([FromServices] AnimalStorage storage, Guid id, Animal animal) =>
+app.MapGet("/", ([FromServices] AnimalStorage storage) => "Jag heter Niklas");
+
+app.MapGet("/animals", ([FromServices] AnimalStorage storage) => Results.Ok(storage.GetAll()));
+
+app.MapGet("/animals/{id}", ([FromServices] AnimalStorage storage, int id) =>
+{
+    var animal = storage.GetById(id);
+    return animal is null ? Results.StatusCode(418) : Results.Ok(animal);
+});
+
+app.MapPut("/animals/{id}", ([FromServices] AnimalStorage storage, int id, Animal animal) =>
 {
     var existingAnimal = storage.GetById(id);
     if (existingAnimal is null)
@@ -39,77 +41,51 @@ app.MapPut("/animals/{id}", ([FromServices] AnimalStorage storage, Guid id, Anim
         return Results.NotFound();
     }
 
-    storage.Update(animal);
-    return Results.Ok(animal);
+    storage.Update(existingAnimal, animal);
+    return Results.Ok(existingAnimal);
 });
 
-app.MapDelete("/animals/{id}", ([FromServices] AnimalStorage storage, Guid id) =>
+app.MapPut("/animals/changeName/{id}", ([FromServices] AnimalStorage storage, int id, string name) =>
 {
-    storage.DeleteById(id);
+    var existingAnimal = storage.GetById(id);
+    if (existingAnimal is null)
+    {
+        return Results.NotFound();
+    }
+
+    storage.UpdateName(existingAnimal, name);
+    return Results.Ok(existingAnimal);
+});
+
+app.MapPut("/animals/changeType/{id}", ([FromServices] AnimalStorage storage, int id, string type) =>
+{
+    var existingAnimal = storage.GetById(id);
+    if (existingAnimal is null)
+    {
+        return Results.NotFound();
+    }
+
+    storage.UpdateType(existingAnimal, type);
+    return Results.Ok(existingAnimal);
+});
+
+app.MapDelete("/animals/{id}", ([FromServices] AnimalStorage storage, int id) =>
+{
+    if (!storage.DeleteById(id))
+    {
+        return Results.NotFound();
+    }
+
     return Results.Ok($"Animal at id: {id} was removed!");
 });
 
 app.MapDelete("/animals/allWithName/{name}", ([FromServices] AnimalStorage storage, string name) =>
 {
-    storage.DeleteAllWithName(name);
-    return Results.Ok($"All {name}'s were removed!");
+    if (!storage.DeleteAllWithName(name))
+    {
+        return Results.NotFound(name);
+    }
+    return Results.Ok($"First {name} was removed!");
 });
 
 app.Run();
-
-internal record Animal(Guid Id, string Name);
-
-class AnimalStorage
-{
-    private readonly Dictionary<Guid, Animal> _animals = new();
-
-    public bool Create(Animal animal)
-    {
-        if (animal is null)
-        {
-            return false;
-        }
-
-        _animals[animal.Id] = animal;
-        return true;
-    }
-
-    public List<Animal> GetAll()
-    {
-        return _animals.Values.ToList();
-    }
-
-    public Animal GetById(Guid id)
-    {
-        return _animals[id];
-    }
-
-    public void Update(Animal animal)
-    {
-        if (animal is null)
-        {
-            return;
-        }
-
-        _animals[animal.Id] = animal;
-    }
-
-    public void DeleteById(Guid id)
-    {
-        _animals.Remove(id);
-    }
-
-    public void DeleteAllWithName(string name)
-    {
-        var animalWithName = _animals.Values.Where(a => a.Name == name).ToList();
-        if (animalWithName.Count == 0)
-        {
-            return;
-        }
-
-        foreach (var animal in animalWithName)
-        {
-            _animals.Remove(animal.Id);
-        }
-    }
-}
