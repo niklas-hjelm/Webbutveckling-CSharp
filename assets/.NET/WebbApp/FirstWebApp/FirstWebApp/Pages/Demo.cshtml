@@ -1,0 +1,31 @@
+﻿@page
+@model FirstWebApp.Pages.DemoModel
+@{
+    ViewData["Title"] = "Demo";
+
+    if (Model.Test == 1)
+    {
+        <h1>Test är 1</h1>
+    }
+    else
+    {
+        <h1>Test är inte 1</h1>
+    }
+}
+
+<div>
+    <h1>Niklas</h1>
+</div>
+
+@{
+    var email = "niklas.hjelm@iths.se";
+    for (int i = 0; i < 10; i++)
+    {
+        if (i == 4)
+        {
+            return;
+        }
+
+        <h1>test</h1>
+    }
+}
