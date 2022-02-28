@@ -1,6 +1,9 @@
 # LABB 2 APIer
 
     I denna uppgift skall vi implementera databashantering och REST API för vår Westcoast Education-applikation.
+
+## Steg 3
+
 Kunden är väldigt nöjd med vad vi så här långt har byggt åt dem.
 
 De har nu ett nytt krav. Det vill att vi utvecklar ett REST Api och de vill att vi gör det med Microsoft .NET 6.0 teknologier.
