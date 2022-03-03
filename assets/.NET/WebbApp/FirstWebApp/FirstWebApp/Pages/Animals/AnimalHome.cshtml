@@ -30,10 +30,29 @@
     </div>
 </div>
 
-<div>
-    <a asp-page="Index">Back to List</a>
+<div class="row">
+    <div class="col-md-4">
+        @{
+            if (Model.Animals.Count <= 0)
+            {
+                <h2>No Animals found in database...</h2>
+            }
+            else
+            {
+                <ul style="list-style-type: none">
+                    @{
+                        foreach (var animal in Model.Animals)
+                        {
+                            <li><div class="card"><div class="card-header">@animal.Name</div></div></li>
+                        }
+                    }
+                </ul>
+            }
+        }
+    </div>
 </div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }

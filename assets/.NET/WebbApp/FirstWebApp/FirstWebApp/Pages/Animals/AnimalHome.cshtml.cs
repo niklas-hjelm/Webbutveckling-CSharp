@@ -1,13 +1,10 @@
 ﻿#nullable disable
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using FirstWebApp.DAL;
 using FirstWebApp.DAL.Models;
+using NuGet.Packaging;
 
 namespace FirstWebApp.Pages.Animals
 {
@@ -20,13 +17,17 @@ namespace FirstWebApp.Pages.Animals
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGet()
         {
+            Animals.AddRange(_context.Animals.Where(_=>true).ToList());
+
             return Page();
         }
 
         [BindProperty]
         public Animal Animal { get; set; }
+
+        [BindProperty] public ObservableCollection<Animal> Animals { get; set; } = new();
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
