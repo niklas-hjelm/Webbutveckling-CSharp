@@ -13,7 +13,7 @@ De har följande krav på lösningen:
 
 ## Grundläggande krav
 * Det ska gå att skapa nya kurser som lagras i en databas(SQL-Server eller MongoDB)
-* Det ska gå att ändra kurser i databasen
+* Det ska gå att ändra och ta bort kurser i databasen
 * Det ska gå att markera en kurs som pensionerad
 * Det ska gå att hämta alla kurser
 * Det ska gå att söka efter en kurs på kursens kursnummer
