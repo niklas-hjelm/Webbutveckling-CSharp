@@ -43,7 +43,7 @@ De har följande krav på lösningen:
 REST Api-lösningen skall utvecklas enligt objektorienterade principer och använda följa Single Responsibility Principle.
 
 ## Användargränssnitt
-Här lämnas det fritt, antingen kan vi använda JavaScript, React, Vue.js, Blazor eller ASP.NET MVC för att implementera en applikation för att kommunicera med REST Api-lösningen. Klient applikationen skall kunna presentera och hantera kurser, deltagare enligt kraven ovan.
+Här lämnas det fritt, antingen kan vi använda JavaScript, React, Vue.js, Blazor eller ASP.NET MVC för att implementera en applikation för att kommunicera med REST Api-lösningen. Klientapplikationen skall kunna presentera och hantera kurser, deltagare enligt kraven ovan.
 
 ## Redovisning
 
