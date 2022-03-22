@@ -1,10 +1,16 @@
 using DatabaseFirstDemo.DAL;
 using DatabaseFirstDemo.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<HeroSchoolStorage>();
+builder.Services.AddDbContext<HeroSchoolContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("conString"));
+});
+
+builder.Services.AddScoped<HeroSchoolStorage>();
 
 var app = builder.Build();
 
