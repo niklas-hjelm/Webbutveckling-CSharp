@@ -27,4 +27,3 @@
 ### [Vecka 18](./assets/V18.md) Vue
 ### [Vecka 19](./assets/V19.md) Fördjupning
 ### [Vecka 20](./assets/V20.md) Fördjupning
-### [Vecka 21](./assets/V21.md) Fördjupning
