@@ -14,7 +14,7 @@
 ## RESTful API
 * [REST API Tutorial](https://restfulapi.net/)
 * [MS Docs - Minimal API](https://docs.microsoft.com/en-us/aspnet/core/tutorials/min-web-api?view=aspnetcore-6.0&tabs=visual-studio)
-* [MS Docs - API Controllers](https://docs.microsoft.com/en-us/aspnet/core/tutorials/min-web-api?view=aspnetcore-6.0&tabs=visual-studio)
+* [MS Docs - API Controllers](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio)
 
 ## Samt Tidigare genomgångar, labbar och demoprojekten
 * [JWT och Login](https://github.com/niklas-hjelm/BlazorWASMDemo)
